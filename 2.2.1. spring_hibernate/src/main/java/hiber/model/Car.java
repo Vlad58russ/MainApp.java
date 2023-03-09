@@ -1,14 +1,14 @@
 package hiber.model;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
 @Table(name = "car")
-public class Car implements Serializable {
+public class Car {
     @Id
-    @OneToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @OneToOne(mappedBy = "car", cascade = CascadeType.ALL)
     private User user;
     @Column(name = "model")
     private String model;
@@ -21,6 +21,14 @@ public class Car implements Serializable {
     }
 
     public Car() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public void setUser(User user) {

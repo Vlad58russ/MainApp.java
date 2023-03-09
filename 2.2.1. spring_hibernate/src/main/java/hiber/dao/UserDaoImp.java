@@ -35,7 +35,5 @@ public class UserDaoImp implements UserDao {
                 "c.series = :seriesCar");
         User user = (User) query.setParameter("modelCar", model).setParameter("seriesCar", series).getSingleResult();
         return user;
-
-
     }
 }
