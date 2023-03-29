@@ -29,6 +29,7 @@ public class UserDaoImp implements UserDao {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public User UserModelSeries(String model, int series) {
         Session session = sessionFactory.openSession();
         Query query = session.createQuery("select u from User u,Car c where u.car.id = c.id and c.model = :modelCar and " +
